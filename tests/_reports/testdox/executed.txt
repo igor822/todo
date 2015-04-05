@@ -1,0 +1,13 @@
+\Bootstrap
+ [x] Not found config file
+
+\Component\File
+ [x] Create file
+ [x] Write content
+ [x] Read content
+
+Task\Storage\Driver\FileStorage
+ [x] Instantiate correct
+ [x] Add item
+ [x] Remove item
+
