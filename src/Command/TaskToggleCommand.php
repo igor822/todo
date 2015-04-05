@@ -16,7 +16,7 @@ class TaskToggleCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('task:toggle')
+        $this->setName('toggle')
              ->setDescription('Toggle status of a task')
              ->setDefinition([
                  new InputArgument('toggle', InputArgument::REQUIRED, 'Toggle Task')

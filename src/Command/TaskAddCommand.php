@@ -13,7 +13,7 @@ class TaskAddCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('task:add')
+        $this->setName('add')
              ->setDescription('Add a new task')
              ->setDefinition([
                  new InputArgument('add', InputArgument::REQUIRED, 'Add')
