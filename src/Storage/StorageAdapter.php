@@ -55,7 +55,8 @@ class StorageAdapter
     {
         switch ($driver) {
             case DriverType::FILE:
-                $fileFinder = new PathnameBuilder($this->config['storage']['path']);
+                $config = $this->config['storage'];
+                $fileFinder = new PathnameBuilder($config['path'], $config['path_alternatives']);
                 $filename = $fileFinder->getFullPath($this->config['storage']['filename']);
                 $this->driver = new FileStorage($filename);
                 break;
