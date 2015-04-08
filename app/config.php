@@ -2,8 +2,8 @@
 
 return [
     'storage' => [
-        'path' => \Task\Constants\PathPattern::HOME . '/Documents',
+        'path' => \Task\Constants\PathPattern::HOME . '/Dropbox',
         'driver' => 'file',
-        'filename' => 'task.json'
+        'filename' => 'tasks.json'
     ]
 ];
