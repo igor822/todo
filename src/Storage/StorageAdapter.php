@@ -2,6 +2,8 @@
 
 namespace Task\Storage;
 
+use Symfony\Component\Finder\Finder;
+use Task\Component\PathnameBuilder;
 use Task\Constants\DriverType;
 use Task\Storage\Driver\FileStorage;
 use Task\Storage\Driver\StorageDriverInterface;
@@ -53,7 +55,8 @@ class StorageAdapter
     {
         switch ($driver) {
             case DriverType::FILE:
-                $filename = sprintf('%s/%s', $this->config['storage']['path'], $this->config['storage']['filename']);
+                $fileFinder = new PathnameBuilder($this->config['storage']['path']);
+                $filename = $fileFinder->getFullPath($this->config['storage']['filename']);
                 $this->driver = new FileStorage($filename);
                 break;
         }

@@ -4,7 +4,7 @@ namespace Task\Component;
 
 use Task\Constants\PathPattern;
 
-class FileFinder
+class PathnameBuilder
 {
     private $path;
 
