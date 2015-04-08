@@ -1,0 +1,13 @@
+{
+  "directories" : ["src", "app"],
+  "finder" : [
+    {
+      "name" : "*.php",
+      "exclude" : ["Tests", "tests"],
+      "in" : "vendor"
+    }
+  ],
+  "main" : "app/todo",
+  "output" : "todo.phar",
+  "stub" : true
+}
