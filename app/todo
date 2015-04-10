@@ -17,4 +17,5 @@ $app = new Application();
 $app->add(new \Task\Command\TaskAddCommand());
 $app->add(new \Task\Command\TaskToggleCommand());
 $app->add(new \Task\Command\TaskListCommand());
+$app->add(new \Task\Command\TaskRemoveCommand());
 $app->run();

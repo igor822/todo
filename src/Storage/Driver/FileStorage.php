@@ -97,6 +97,7 @@ class FileStorage implements StorageDriverInterface
     {
         $task = $this->getItem($id);
         $this->storage->offsetUnset($task['index']);
+        $this->save();
     }
 
     /**
