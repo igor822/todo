@@ -3,7 +3,8 @@
   "description" : "A simple todo list to your console",
   "require" : {
     "php" : ">=5.3.3",
-    "symfony/console" : "2.4.x-dev"
+    "symfony/console" : "2.4.x-dev",
+    "herrera-io/phar-update" : "1.*"
   },
   "require-dev": {
     "phpunit/phpunit": "3.7.*"
