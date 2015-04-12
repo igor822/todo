@@ -14,6 +14,7 @@ class TaskAddCommand extends Command
     protected function configure()
     {
         $this->setName('add')
+             ->setAliases(['a'])
              ->setDescription('Add a new task')
              ->setDefinition([
                  new InputArgument('add', InputArgument::REQUIRED, 'Add')

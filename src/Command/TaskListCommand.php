@@ -20,7 +20,11 @@ class TaskListCommand extends Command
              ->setDescription('Add a new task')
              ->setDefinition([
                  new InputArgument('list', InputArgument::OPTIONAL, 'List')
-             ]);
+             ])
+             ->setHelp(<<<EOT
+The <info>todo</info>
+EOT
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

@@ -8,9 +8,12 @@ class Bootstrap
 {
     private $config;
 
+    private $appDir;
+
     public function __construct()
     {
-        $configFile = __DIR__ . '/../app/config.php';
+        $this->appDir = __DIR__ . '/../app';
+        $configFile = $this->appDir . '/config.php';
         if (!file_exists($configFile)) {
             throw new ConfigNotFoundException('Configuration file does not exists');
         }
@@ -23,5 +26,10 @@ class Bootstrap
     public function getConfig()
     {
         return $this->config;
+    }
+
+    public function getAppDir()
+    {
+        return $this->appDir;
     }
 }
