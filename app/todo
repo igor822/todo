@@ -5,7 +5,7 @@
 set_time_limit(0);
 
 /* Optional. It’s better to do it in the php.ini file */
-date_default_timezone_set('America/Los_Angeles');
+date_default_timezone_set('America/Sao_Paulo');
 
 // include the composer autoloader
 require_once __DIR__ . '/../vendor/autoload.php';
