@@ -25,12 +25,14 @@ chmod +x ~/Downloads/todo.phar
 sudo mv ~/Downloads/todo.phar /usr/local/bin/todo
 ```
 
-### Initial
+After installed you can add a task to test with `add` command.
 
 ```bash
 todo add 'Lorem Ipsum'
 todo help
 ```
+
+To list all stored tasks just type `todo`
 
 ## Directly on Dropbox
 
