@@ -1,6 +1,9 @@
 {
   "chmod" : "0755",
   "directories" : ["src", "app"],
+  "files" : [
+    "vendor/herrera-io/phar-update/res/schema.json"
+  ],
   "finder" : [
     {
       "name" : "*.php",
