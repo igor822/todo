@@ -8,5 +8,6 @@ return <<<EOL
     <info>add</info>\t\t Add a new task
     <info>toggle</info>\t Toggles task status
     <info>remove</info>\t Remove the task\n
-The <info>todo</info>
+    <info>update</info>\t Self update todo app
+The <info>todo</info> you can be able to manage your tasks from your terminal.
 EOL;
