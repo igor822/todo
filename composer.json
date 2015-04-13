@@ -1,6 +1,7 @@
 {
   "name" : "igor822/task",
   "description" : "A simple todo list to your console",
+  "version" : "1.0.0",
   "require" : {
     "php" : ">=5.3.3",
     "symfony/console" : "2.4.x-dev",
