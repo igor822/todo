@@ -9,6 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Task\Action\ListAction;
 use Task\Bootstrap;
 use Task\Component\ConsoleColor;
+use Task\Constants\ConsoleColors;
 use Task\Constants\StatusType;
 use Task\Constants\UnicodeIcon;
 
@@ -25,6 +26,18 @@ class TaskListCommand extends Command
 The <info>todo</info>
 EOT
             );
+    }
+
+    private function printHashTag($content)
+    {
+        preg_match_all("/((?<=([#]))[A-Za-z]+)/", $content, $matches, PREG_PATTERN_ORDER);
+        foreach ($matches[0] as $match) {
+            $search = '#' . $match;
+            $replace = ConsoleColor::printColor($search, 'light_yellow');
+            $content = str_replace($search, $replace, $content);
+        }
+
+        return $content;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -56,7 +69,7 @@ EOT
                     "%s | %s | %s",
                     $item['id'],
                     $iconStatus($item['status']),
-                    $item['content']
+                    $this->printHashTag($item['content'])
                 )
             );
         }
