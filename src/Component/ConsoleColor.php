@@ -19,7 +19,9 @@ class ConsoleColor
         'light_blue' => ConsoleColors::COLOR_LIGHT_BLUE,
         'light_green' => ConsoleColors::COLOR_LIGHT_GREEN,
         'light_cyan' => ConsoleColors::COLOR_LIGHT_CYAN,
-        'light_purple' => ConsoleColors::COLOR_LIGHT_PURPLE
+        'light_purple' => ConsoleColors::COLOR_LIGHT_PURPLE,
+        'yellow' => ConsoleColors::COLOR_YELLOW,
+        'light_yellow' => ConsoleColors::COLOR_LIGHT_YELLOW
     ];
 
     public static function get($name)
