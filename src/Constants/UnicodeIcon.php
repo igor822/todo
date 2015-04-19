@@ -6,5 +6,5 @@ class UnicodeIcon
 {
     const OPEN = "\\u2718";
 
-    const CLOSED = "\u2714";
+    const CLOSED = "\\u2714";
 }
