@@ -9,9 +9,9 @@ class Storage
      */
     private $adapter;
 
-    public function __construct($config)
+    public function __construct($driver, $storageFile)
     {
-        $this->adapter = new StorageAdapter($config);
+        $this->adapter = new StorageAdapter($driver, $storageFile);
     }
 
     /**

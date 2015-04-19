@@ -2,7 +2,6 @@
 
 namespace Task\Storage;
 
-//use Symfony\Component\Finder\Finder;
 use Task\Component\PathnameBuilder;
 use Task\Constants\DriverType;
 use Task\Storage\Driver\FileStorage;
@@ -10,17 +9,20 @@ use Task\Storage\Driver\StorageDriverInterface;
 
 class StorageAdapter
 {
-    private $config;
+    /**
+     * @var string
+     */
+    private $storageFile;
 
     /**
      * @var StorageDriverInterface
      */
     private $driver;
 
-    public function __construct($config)
+    public function __construct($driver, $storageFile)
     {
-        $this->config = $config;
-        $this->load($config['storage']['driver']);
+        $this->storageFile = $storageFile;
+        $this->load($driver);
     }
 
     public function insert($item)
@@ -55,10 +57,7 @@ class StorageAdapter
     {
         switch ($driver) {
             case DriverType::FILE:
-                $config = $this->config['storage'];
-                $fileFinder = new PathnameBuilder($config['path'], $config['path_alternatives']);
-                $filename = $fileFinder->getFullPath($this->config['storage']['filename']);
-                $this->driver = new FileStorage($filename);
+                $this->driver = new FileStorage($this->storageFile);
                 break;
         }
     }
