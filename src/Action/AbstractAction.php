@@ -3,6 +3,7 @@
 namespace Task\Action;
 
 use Task\Bootstrap;
+use Task\Component\PathnameBuilder;
 use Task\Storage\Storage;
 
 abstract class AbstractAction
@@ -28,7 +29,10 @@ abstract class AbstractAction
     public function getStorage()
     {
         if ($this->storage === null) {
-            $this->storage = new Storage($this->application->getConfig());
+            $configuration = $this->application->getConfiguration();
+            $driver = $configuration->getConfig()['global']['storage']['driver'];
+            $storageFile = $configuration->getConfig()['local']['file-storage'];
+            $this->storage = new Storage($driver, $storageFile);
         }
         return $this->storage;
     }

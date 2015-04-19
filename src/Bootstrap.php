@@ -2,10 +2,14 @@
 
 namespace Task;
 
+use Task\Component\Configuration;
 use Task\Exceptions\ConfigNotFoundException;
 
 class Bootstrap
 {
+    /**
+     * @var Configuration
+     */
     private $config;
 
     private $appDir;
@@ -14,6 +18,12 @@ class Bootstrap
     {
         $this->appDir = __DIR__ . '/../app';
         $configFile = $this->appDir . '/config.php';
+        $this->loadConfig($configFile);
+        $this->initialize();
+    }
+
+    private function loadConfig($configFile)
+    {
         if (!file_exists($configFile)) {
             throw new ConfigNotFoundException('Configuration file does not exists');
         }
@@ -21,9 +31,9 @@ class Bootstrap
     }
 
     /**
-     * @return array
+     * @return Configuration
      */
-    public function getConfig()
+    public function getConfiguration()
     {
         return $this->config;
     }
@@ -31,5 +41,11 @@ class Bootstrap
     public function getAppDir()
     {
         return $this->appDir;
+    }
+
+    public function initialize()
+    {
+        $configuration = new Configuration($this->config);
+        $this->config = $configuration;
     }
 }
