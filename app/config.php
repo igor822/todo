@@ -1,12 +1,12 @@
 <?php
 
 return [
+    'cache' => [
+        'path' => \Task\Constants\PathPattern::HOME . '/.todo',
+        'config_file' => 'config.json'
+    ],
     'storage' => [
-        'path' => \Task\Constants\PathPattern::HOME . '/Dropboxsss',
-        'path_alternatives' => [
-            \Task\Constants\PathPattern::HOME . '/Documents'
-        ],
         'driver' => 'file',
-        'filename' => 'tasks.json'
+        'file-storage' => \Task\Constants\PathPattern::HOME . '/Dropbox/tasks.json'
     ]
 ];
