@@ -10,7 +10,7 @@ return <<<EOL
     <info>toggle</info>\t[id]\t\t Toggles task status
     <info>config</info>\t[option]\t Set configuration of app
     <info>remove</info>\t[id]\t\t Remove the task
-    <info>update</info>\tSelf update todo app
+    <info>self-update</info>\tUpdate to current version of todo app
 
 The <info>todo</info> you can be able to manage your tasks from your terminal.\n
 EOL;

@@ -31,6 +31,6 @@ class TaskRemoveCommand  extends Command
             $removeAction->run();
         }
 
-        $output->writeln('Successful removed');
+        $output->writeln('Task #'. $value .' successful removed');
     }
 }

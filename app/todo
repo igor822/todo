@@ -14,12 +14,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Symfony\Component\Console\Application;
 
 $app = new Application('Todo', '1.1.0');
+$app->add(new \Task\Command\SelfUpdateCommand());
 $app->add(new \Task\Command\TaskAddCommand());
 $app->add(new \Task\Command\TaskToggleCommand());
 $app->add(new \Task\Command\TaskListCommand());
 $app->add(new \Task\Command\TaskRemoveCommand());
 $app->add(new \Task\Command\TaskHelpCommand());
-$app->add(new \Task\Command\UpdateCommand());
 $app->add(new \Task\Command\TaskSearchCommand());
 $app->add(new \Task\Command\TaskConfigCommand());
 $app->run();
