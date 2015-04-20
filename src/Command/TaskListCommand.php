@@ -27,6 +27,11 @@ class TaskListCommand extends Command
         $bootstrap = new Bootstrap();
         $listAction = new ListAction($bootstrap);
 
+        if ($listAction->hasTask()) {
+            $output->writeln("<info>There is no task now!</info>");
+            return;
+        }
+
         foreach ($listAction->printAllTasks() as $line) {
             $output->writeln($line);
         }

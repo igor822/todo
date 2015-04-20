@@ -32,6 +32,6 @@ class TaskAddCommand extends Command
             $addAction->run();
         }
 
-        $output->writeln($value);
+        $output->writeln("<info>Task successful added!</info>");
     }
 }

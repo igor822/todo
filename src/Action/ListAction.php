@@ -10,6 +10,8 @@ class ListAction extends AbstractAction
 {
     private $items = [];
 
+    private $itemsSearch = [];
+
     public function search($query)
     {
         $content = $this->run();
@@ -17,22 +19,22 @@ class ListAction extends AbstractAction
             $this->searchContent($index, $item, $query);
         }
 
-        return $this->items;
+        return $this->itemsSearch;
     }
 
     private function searchContent($index, $item, $search)
     {
         if (strpos($item['content'], '#' . $search) !== false) {
-            $this->items[$index] = $item;
+            $this->itemsSearch[$index] = $item;
         }
     }
 
     public function run()
     {
         $storageAdapter = $this->getStorage()->getAdapter();
-        $items = $storageAdapter->findAll();
+        $this->items = $storageAdapter->findAll();
 
-        return $items;
+        return $this->items;
     }
 
     private function printHashTag($content)
@@ -81,5 +83,10 @@ class ListAction extends AbstractAction
         }
 
         return $lines;
+    }
+
+    public function hasTask()
+    {
+        return count($this->items) > 0 ? true : false;
     }
 }
