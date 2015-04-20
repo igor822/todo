@@ -29,7 +29,13 @@ class TaskSearchCommand extends Command
         $listAction = new ListAction($bootstrap);
 
         $query = $input->getArgument('query');
-        foreach ($listAction->printAllTasks($query) as $line) {
+        $items = $listAction->printAllTasks($query);
+        if (count($items) == 0) {
+            $output->writeln("<info>There is no founded tasks!</info>");
+            return;
+        }
+
+        foreach ($items as $line) {
             $output->writeln($line);
         }
     }
