@@ -108,8 +108,8 @@ class FileStorage implements StorageDriverInterface
     public function updateItem($id, $values)
     {
         $item = $this->getItem($id);
-        $values = array_merge($item['task'], $values);
-        $this->storage->offsetSet($item['index'], $values);
+        $item['task']['content'] = $values;
+        $this->storage->offsetSet($item['index'], $item['task']);
         $this->save();
 
         return $item['task'];
