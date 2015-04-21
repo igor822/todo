@@ -49,4 +49,10 @@ class Configuration
         $this->localConfig[$key] = $value;
         $this->save();
     }
+
+    public function removeConfig($key)
+    {
+        unset($this->localConfig[$key]);
+        $this->save();
+    }
 }

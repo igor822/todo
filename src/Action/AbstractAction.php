@@ -37,5 +37,10 @@ abstract class AbstractAction
         return $this->storage;
     }
 
+    public function getApplication()
+    {
+        return $this->application;
+    }
+
     abstract public function run();
 }

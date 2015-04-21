@@ -15,6 +15,7 @@ class TaskConfigCommand extends Command
     {
         $this->setName('config')
              ->addOption('--file-storage', null, InputOption::VALUE_REQUIRED)
+             ->addOption('--remove', null, InputOption::VALUE_REQUIRED)
              ->addOption('--list', null, InputOption::VALUE_NONE);
     }
 
@@ -28,6 +29,12 @@ class TaskConfigCommand extends Command
         $fileStorage = $input->getOption('file-storage');
         if ($fileStorage) {
             $configAction->addConfig('file-storage', $fileStorage);
+        }
+
+        $configRemove = $input->getOption('remove');
+        if ($configRemove) {
+            $configAction->removeConfig($configRemove);
+            $output->writeln("<info>Config $configRemove was successful removed</info>");
         }
 
         if ($input->getOption('list')) {

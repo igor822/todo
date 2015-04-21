@@ -23,4 +23,5 @@ $app->add(new \Task\Command\TaskHelpCommand());
 $app->add(new \Task\Command\TaskSearchCommand());
 $app->add(new \Task\Command\TaskConfigCommand());
 $app->add(new \Task\Command\TaskUpdateCommand());
+$app->add(new \Task\Command\TaskInitCommand());
 $app->run();

@@ -19,6 +19,11 @@ class ConfigAction extends AbstractAction
         $this->configuration->addConfig($key, $value);
     }
 
+    public function removeConfig($key)
+    {
+        $this->configuration->removeConfig($key);
+    }
+
     public function printConfigs(OutputInterface $output)
     {
         foreach ($this->configuration->getConfig()['local'] as $key => $value) {
