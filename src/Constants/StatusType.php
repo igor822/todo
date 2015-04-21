@@ -4,7 +4,7 @@ namespace Task\Constants;
 
 class StatusType
 {
-    const OPEN = 'open';
+    const TODO = 'todo';
 
-    const CLOSED = 'closed';
+    const DONE = 'done';
 }

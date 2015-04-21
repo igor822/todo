@@ -54,11 +54,11 @@ class ListAction extends AbstractAction
             $str = '';
             $color = '';
             switch ($status) {
-                case StatusType::OPEN:
+                case StatusType::TODO:
                     $str = UnicodeIcon::OPEN;
                     $color = 'red';
                     break;
-                case StatusType::CLOSED:
+                case StatusType::DONE:
                     $str = UnicodeIcon::CLOSED;
                     $color = 'green';
                     break;

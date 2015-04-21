@@ -64,7 +64,7 @@ class FileStorage implements StorageDriverInterface
         $id = $this->getNextId();
         $item = [
             'id' => $id,
-            'status' => StatusType::OPEN,
+            'status' => StatusType::TODO,
             'content' => $content
         ];
         $this->storage->append($item);

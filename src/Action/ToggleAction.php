@@ -16,7 +16,7 @@ class ToggleAction extends AbstractAction
     public function run()
     {
         $storageAdapter = $this->getStorage()->getAdapter();
-        $storageAdapter->update($this->content, ['status' => StatusType::CLOSED]);
+        $storageAdapter->update($this->content, ['status' => StatusType::DONE]);
 
         return true;
     }
