@@ -13,7 +13,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // import the Symfony Console Application
 use Symfony\Component\Console\Application;
 
-$app = new Application('Todo', '1.1.0');
+$app = new Application('Todo', '1.0.0');
 $app->add(new \Task\Command\SelfUpdateCommand());
 $app->add(new \Task\Command\TaskAddCommand());
 $app->add(new \Task\Command\TaskToggleCommand());
