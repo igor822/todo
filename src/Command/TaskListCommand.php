@@ -19,6 +19,7 @@ class TaskListCommand extends Command
     protected function configure()
     {
         $this->setName('list')
+             ->setAliases(['filter'])
              ->setDescription('List all tasks');
     }
 
@@ -32,7 +33,12 @@ class TaskListCommand extends Command
             return;
         }
 
-        foreach ($listAction->printAllTasks() as $line) {
+        $filter = StatusType::TODO;
+        if ($input->getOption('done')) {
+            $filter = StatusType::DONE;
+        }
+
+        foreach ($listAction->printAllTasks(null, $filter) as $line) {
             $output->writeln($line);
         }
     }

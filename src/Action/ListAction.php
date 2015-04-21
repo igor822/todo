@@ -38,7 +38,7 @@ class ListAction extends AbstractAction
 
     private function printHashTag($content)
     {
-        preg_match_all("/((?<=([#]))[A-Za-z]+)/", $content, $matches, PREG_PATTERN_ORDER);
+        preg_match_all("/((?<=([#]))[A-Za-z0-9]+)/", $content, $matches, PREG_PATTERN_ORDER);
         foreach ($matches[0] as $match) {
             $search = '#' . $match;
             $replace = ConsoleColor::printColor($search, 'light_yellow');
@@ -48,7 +48,18 @@ class ListAction extends AbstractAction
         return $content;
     }
 
-    public function printAllTasks($query = null)
+    private function filterByStatus($items, $status)
+    {
+        $itemsAux = [];
+        foreach ($items as $item) {
+            if ($item['status'] == $status) {
+                $itemsAux[] = $item;
+            }
+        }
+        return $itemsAux;
+    }
+
+    public function printAllTasks($query = null, $filter = StatusType::TODO)
     {
         $iconStatus = function($status) {
             $str = '';
@@ -71,6 +82,7 @@ class ListAction extends AbstractAction
         if ($query !== null) {
             $items = $this->search($query);
         }
+        $items = $this->filterByStatus($items, $filter);
         $lines = [];
         foreach ($items as $item) {
             $lines[] = sprintf(
