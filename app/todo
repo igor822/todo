@@ -12,15 +12,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 // import the Symfony Console Application
 use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 
 $app = new Application('Todo', '1.0.0');
-$app->getDefinition()
-    ->addOptions([
-        new InputOption('--done', null, InputOption::VALUE_NONE),
-        //new InputArgument('--done', InputArgument::OPTIONAL)
-    ]);
 $app->add(new \Task\Command\SelfUpdateCommand());
 $app->add(new \Task\Command\TaskAddCommand());
 $app->add(new \Task\Command\TaskToggleCommand());

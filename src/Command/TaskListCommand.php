@@ -20,7 +20,8 @@ class TaskListCommand extends Command
     {
         $this->setName('list')
              ->setAliases(['filter'])
-             ->setDescription('List all tasks');
+             ->setDescription('List all tasks')
+             ->addOption('--done', null, InputOption::VALUE_NONE);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
