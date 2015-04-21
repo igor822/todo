@@ -33,7 +33,6 @@ class ListAction extends AbstractAction
     {
         $storageAdapter = $this->getStorage()->getAdapter();
         $this->items = $storageAdapter->findAll();
-
         return $this->items;
     }
 

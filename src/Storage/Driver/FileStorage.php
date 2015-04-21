@@ -41,6 +41,19 @@ class FileStorage implements StorageDriverInterface
         $this->file->write('');
     }
 
+    private function getNextId()
+    {
+        $items = $this->getValuesBy('id');
+        $id = $this->storage->count() + 1;
+        if (count($items)) {
+            sort($items);
+            $id = array_pop($items);
+            $id++;
+        }
+
+        return $id;
+    }
+
     /**
      * @param string $content
      * @return int
@@ -48,7 +61,7 @@ class FileStorage implements StorageDriverInterface
     public function addItem($content)
     {
         $this->load();
-        $id = $this->storage->count() + 1;
+        $id = $this->getNextId();
         $item = [
             'id' => $id,
             'status' => StatusType::OPEN,
@@ -80,6 +93,16 @@ class FileStorage implements StorageDriverInterface
             $iterator->next();
         }
         return $value;
+    }
+
+    public function getValuesBy($key)
+    {
+        $storage = $this->storage->getArrayCopy();
+        $items = [];
+        foreach ($storage as $item) {
+            $items[] = $item[$key];
+        }
+        return $items;
     }
 
     /**
