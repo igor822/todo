@@ -13,22 +13,35 @@ class Configuration
 
     private $globalConfig = [];
 
+    private $loadedConfig = false;
+
     public function __construct($config = [])
     {
         $this->globalConfig = $config;
+        $this->setDefaultConfig($config);
         $this->loadConfig();
+    }
+
+    private function setDefaultConfig($config)
+    {
+        $this->localConfig = $config['storage'];
+
+        $fileStorage = $config['storage']['file-storage'];
+        $pathBuilder = new PathnameBuilder($fileStorage);
+        $this->localConfig['file-storage'] = $pathBuilder->replacePathHome($fileStorage);
     }
 
     public function loadConfig()
     {
-        if (!empty($this->localConfig)) {
+        if ($this->loadedConfig) {
             return $this->localConfig;
         }
 
         $pathBuilder = PathnameBuilder::createDirectory($this->globalConfig['cache']['path']);
         $configFile = $pathBuilder->getFullPath($this->globalConfig['cache']['config_file']);
         $this->file = new File($configFile);
-        $this->localConfig = $this->file->readJson();
+        $this->localConfig = array_merge($this->localConfig, $this->file->readJson());
+        $this->loadedConfig = true;
 
         return $this->getConfig();
     }

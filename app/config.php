@@ -7,6 +7,6 @@ return [
     ],
     'storage' => [
         'driver' => 'file',
-        'file-storage' => \Task\Constants\PathPattern::HOME . '/Dropbox/tasks.json'
+        'file-storage' => \Task\Constants\PathPattern::HOME . '/.todo/tasks.todo'
     ]
 ];
