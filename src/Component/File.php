@@ -66,7 +66,9 @@ class File
     {
         $f = fopen($this->filename, 'r');
         if ($this->hasContent()) {
-            return fread($f, filesize($this->filename));
+            $content = fread($f, filesize($this->filename));
+            fclose($f);
+            return $content;
         }
 
         return '';
