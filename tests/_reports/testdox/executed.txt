@@ -1,7 +1,7 @@
-\Bootstrap
- [x] Not found config file
+Bootstrap
+ [ ] Not found config file
 
-\Component\File
+Component\File
  [x] Create file
  [x] Write content
  [x] Read content

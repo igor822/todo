@@ -3,8 +3,9 @@
 namespace Test;
 
 use Task\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
-class BootstrapTest extends \PHPUnit_Framework_TestCase
+class BootstrapTest extends TestCase
 {
     protected function setUp()
     {

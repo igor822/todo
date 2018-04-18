@@ -2,7 +2,9 @@
 
 namespace Task\Storage\Driver;
 
-class FileStorageTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class FileStorageTest extends TestCase
 {
     private $tempFile;
 
