@@ -76,7 +76,7 @@ class File
 
     public function readJson()
     {
-        return json_decode($this->read(), true);
+        return json_decode($this->read(), true) ?? [];
     }
 
     public function getFilename()
