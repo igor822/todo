@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Task\Storage\Driver;
 
@@ -58,7 +58,7 @@ class FileStorage implements StorageDriverInterface
      * @param string $content
      * @return int
      */
-    public function addItem($content)
+    public function addItem(string $content): int
     {
         $this->load();
         $id = $this->getNextId();
@@ -77,7 +77,7 @@ class FileStorage implements StorageDriverInterface
      * @param $id
      * @return null
      */
-    public function getItem($id)
+    public function getItem(string $id): array
     {
         $value = null;
         $checkItem = function($index, $item, $id) use (&$value) {
@@ -95,7 +95,7 @@ class FileStorage implements StorageDriverInterface
         return $value;
     }
 
-    public function getValuesBy($key)
+    public function getValuesBy(string $key): array
     {
         $storage = $this->storage->getArrayCopy();
         $items = [];
@@ -108,7 +108,7 @@ class FileStorage implements StorageDriverInterface
     /**
      * @return array
      */
-    public function getAll()
+    public function getAll(): array
     {
         return $this->storage->getArrayCopy();
     }
@@ -116,7 +116,7 @@ class FileStorage implements StorageDriverInterface
     /**
      * @param $id
      */
-    public function removeItem($id)
+    public function removeItem(string $id): void
     {
         $task = $this->getItem($id);
         $this->storage->offsetUnset($task['index']);
@@ -128,17 +128,17 @@ class FileStorage implements StorageDriverInterface
      * @param $values
      * @return mixed
      */
-    public function updateItem($id, $values)
+    public function updateItem(string $id, string $values): array
     {
         $item = $this->getItem($id);
-        $item['task'] = array_merge($item['task'], $values);
+        $item['task'] = array_merge($item['task'], ['content' => $values]);
         $this->storage->offsetSet($item['index'], $item['task']);
         $this->save();
 
         return $item['task'];
     }
 
-    public function save()
+    public function save(): void
     {
         $this->file->truncate();
         $this->file->writeJson($this->storage->getArrayCopy());

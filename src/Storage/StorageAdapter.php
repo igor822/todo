@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Task\Storage;
 
@@ -53,7 +53,7 @@ class StorageAdapter
     /**
      * @param StorageDriverInterface $driver
      */
-    public function load($driver)
+    public function load($driver): void
     {
         switch ($driver) {
             case DriverType::FILE:
